@@ -8,7 +8,23 @@ layout: default
         <small>这里记录着我的学习之路</small>
         <hr>
         <ul>
-            {% for post in paginator.posts %}
+            {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
+            {% endif %}
+            </div>
+    <div class="label-card">
+        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+    </div>
+    
+    <div class="label-card">
+        {% include category.html %}
+    </div>
+    
+    <div class="label-card">
+        {% include tag.html %}
+    </div>
+</div>
+<div class="excerpt">
+    {% for post in paginator.posts %}
               <li>
                 <h2>
                   <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -18,22 +34,7 @@ layout: default
                         <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
                     </div>
                     <div class="label-card">
-                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
-                        {% endif %}
-                    </div>
-                    <div class="label-card">
-                        {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
-                    </div>
-
-                    <div class="label-card">
-                    {% include category.html %}
-                    </div>
-
-                    <div class="label-card">
-                    {% include tag.html %}
-                    </div>
-                </div>
-                <div class="excerpt">
+                 
                     {{post.excerpt}}
                 </div>
                 <div class="read-all">
